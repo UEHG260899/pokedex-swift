@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A4A456A328A81FFE00CE5E05 /* AppConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A456A228A81FFE00CE5E05 /* AppConfigurations.swift */; };
 		A4CD9AB528A811C500E8D2A0 /* PokedexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD9AB428A811C500E8D2A0 /* PokedexApp.swift */; };
 		A4CD9AB728A811C500E8D2A0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD9AB628A811C500E8D2A0 /* ContentView.swift */; };
 		A4CD9AB928A811C700E8D2A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4CD9AB828A811C700E8D2A0 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A4A456A228A81FFE00CE5E05 /* AppConfigurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurations.swift; sourceTree = "<group>"; };
 		A4CD9AB128A811C500E8D2A0 /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4CD9AB428A811C500E8D2A0 /* PokedexApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexApp.swift; sourceTree = "<group>"; };
 		A4CD9AB628A811C500E8D2A0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -77,6 +79,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A4A456A028A81FE900CE5E05 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A4A456A128A81FF100CE5E05 /* Configurations */,
+				A4CD9AF828A81C2500E8D2A0 /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		A4A456A128A81FF100CE5E05 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				A4A456A228A81FFE00CE5E05 /* AppConfigurations.swift */,
+			);
+			path = Configurations;
+			sourceTree = "<group>";
+		};
 		A4CD9AA828A811C500E8D2A0 = {
 			isa = PBXGroup;
 			children = (
@@ -98,7 +117,7 @@
 		A4CD9AB328A811C500E8D2A0 /* Pokedex */ = {
 			isa = PBXGroup;
 			children = (
-				A4CD9AF828A81C2500E8D2A0 /* Extensions */,
+				A4A456A028A81FE900CE5E05 /* Utils */,
 				A4CD9AF628A81BFE00E8D2A0 /* SupportingFiles */,
 				A4CD9ADE28A81B0F00E8D2A0 /* Fonts */,
 				A4CD9AF728A81C1700E8D2A0 /* Views */,
@@ -280,6 +299,7 @@
 			files = (
 				A4CD9AFA28A81C3200E8D2A0 /* Text+Extensions.swift in Sources */,
 				A4CD9AB728A811C500E8D2A0 /* ContentView.swift in Sources */,
+				A4A456A328A81FFE00CE5E05 /* AppConfigurations.swift in Sources */,
 				A4CD9AB528A811C500E8D2A0 /* PokedexApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

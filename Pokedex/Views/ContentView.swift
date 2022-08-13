@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         Text("Hello, world!")
-            .customFont("TitilliumWeb-Regular")
+            .customFont(.titilliumBold, size: 30, relativeTo: .title)
             .padding()
     }
 }

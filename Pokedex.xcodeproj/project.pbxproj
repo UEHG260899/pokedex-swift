@@ -12,19 +12,22 @@
 		A4CD9AB928A811C700E8D2A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4CD9AB828A811C700E8D2A0 /* Assets.xcassets */; };
 		A4CD9ABC28A811C700E8D2A0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4CD9ABB28A811C700E8D2A0 /* Preview Assets.xcassets */; };
 		A4CD9AC628A811C700E8D2A0 /* PokedexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD9AC528A811C700E8D2A0 /* PokedexTests.swift */; };
-		A4CD9AD028A811C700E8D2A0 /* PokedexUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD9ACF28A811C700E8D2A0 /* PokedexUITests.swift */; };
-		A4CD9AD228A811C700E8D2A0 /* PokedexUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD9AD128A811C700E8D2A0 /* PokedexUITestsLaunchTests.swift */; };
+		A4CD9AEA28A81B2400E8D2A0 /* TitilliumWeb-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4CD9ADF28A81B2400E8D2A0 /* TitilliumWeb-SemiBold.ttf */; };
+		A4CD9AEB28A81B2400E8D2A0 /* TitilliumWeb-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4CD9AE028A81B2400E8D2A0 /* TitilliumWeb-BoldItalic.ttf */; };
+		A4CD9AEC28A81B2400E8D2A0 /* TitilliumWeb-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4CD9AE128A81B2400E8D2A0 /* TitilliumWeb-ExtraLight.ttf */; };
+		A4CD9AED28A81B2400E8D2A0 /* TitilliumWeb-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4CD9AE228A81B2400E8D2A0 /* TitilliumWeb-Italic.ttf */; };
+		A4CD9AEE28A81B2400E8D2A0 /* TitilliumWeb-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4CD9AE328A81B2400E8D2A0 /* TitilliumWeb-Light.ttf */; };
+		A4CD9AEF28A81B2400E8D2A0 /* TitilliumWeb-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4CD9AE428A81B2400E8D2A0 /* TitilliumWeb-Black.ttf */; };
+		A4CD9AF028A81B2400E8D2A0 /* TitilliumWeb-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4CD9AE528A81B2400E8D2A0 /* TitilliumWeb-ExtraLightItalic.ttf */; };
+		A4CD9AF128A81B2400E8D2A0 /* TitilliumWeb-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4CD9AE628A81B2400E8D2A0 /* TitilliumWeb-LightItalic.ttf */; };
+		A4CD9AF228A81B2400E8D2A0 /* TitilliumWeb-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4CD9AE728A81B2400E8D2A0 /* TitilliumWeb-SemiBoldItalic.ttf */; };
+		A4CD9AF328A81B2400E8D2A0 /* TitilliumWeb-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4CD9AE828A81B2400E8D2A0 /* TitilliumWeb-Bold.ttf */; };
+		A4CD9AF428A81B2400E8D2A0 /* TitilliumWeb-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4CD9AE928A81B2400E8D2A0 /* TitilliumWeb-Regular.ttf */; };
+		A4CD9AFA28A81C3200E8D2A0 /* Text+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD9AF928A81C3200E8D2A0 /* Text+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		A4CD9AC228A811C700E8D2A0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A4CD9AA928A811C500E8D2A0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A4CD9AB028A811C500E8D2A0;
-			remoteInfo = Pokedex;
-		};
-		A4CD9ACC28A811C700E8D2A0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A4CD9AA928A811C500E8D2A0 /* Project object */;
 			proxyType = 1;
@@ -41,9 +44,19 @@
 		A4CD9ABB28A811C700E8D2A0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A4CD9AC128A811C700E8D2A0 /* PokedexTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokedexTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4CD9AC528A811C700E8D2A0 /* PokedexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexTests.swift; sourceTree = "<group>"; };
-		A4CD9ACB28A811C700E8D2A0 /* PokedexUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokedexUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A4CD9ACF28A811C700E8D2A0 /* PokedexUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexUITests.swift; sourceTree = "<group>"; };
-		A4CD9AD128A811C700E8D2A0 /* PokedexUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A4CD9ADF28A81B2400E8D2A0 /* TitilliumWeb-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-SemiBold.ttf"; sourceTree = "<group>"; };
+		A4CD9AE028A81B2400E8D2A0 /* TitilliumWeb-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-BoldItalic.ttf"; sourceTree = "<group>"; };
+		A4CD9AE128A81B2400E8D2A0 /* TitilliumWeb-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-ExtraLight.ttf"; sourceTree = "<group>"; };
+		A4CD9AE228A81B2400E8D2A0 /* TitilliumWeb-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-Italic.ttf"; sourceTree = "<group>"; };
+		A4CD9AE328A81B2400E8D2A0 /* TitilliumWeb-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-Light.ttf"; sourceTree = "<group>"; };
+		A4CD9AE428A81B2400E8D2A0 /* TitilliumWeb-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-Black.ttf"; sourceTree = "<group>"; };
+		A4CD9AE528A81B2400E8D2A0 /* TitilliumWeb-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		A4CD9AE628A81B2400E8D2A0 /* TitilliumWeb-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-LightItalic.ttf"; sourceTree = "<group>"; };
+		A4CD9AE728A81B2400E8D2A0 /* TitilliumWeb-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		A4CD9AE828A81B2400E8D2A0 /* TitilliumWeb-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-Bold.ttf"; sourceTree = "<group>"; };
+		A4CD9AE928A81B2400E8D2A0 /* TitilliumWeb-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-Regular.ttf"; sourceTree = "<group>"; };
+		A4CD9AF528A81B4900E8D2A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A4CD9AF928A81C3200E8D2A0 /* Text+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,13 +74,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A4CD9AC828A811C700E8D2A0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -76,7 +82,6 @@
 			children = (
 				A4CD9AB328A811C500E8D2A0 /* Pokedex */,
 				A4CD9AC428A811C700E8D2A0 /* PokedexTests */,
-				A4CD9ACE28A811C700E8D2A0 /* PokedexUITests */,
 				A4CD9AB228A811C500E8D2A0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -86,7 +91,6 @@
 			children = (
 				A4CD9AB128A811C500E8D2A0 /* Pokedex.app */,
 				A4CD9AC128A811C700E8D2A0 /* PokedexTests.xctest */,
-				A4CD9ACB28A811C700E8D2A0 /* PokedexUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -94,9 +98,11 @@
 		A4CD9AB328A811C500E8D2A0 /* Pokedex */ = {
 			isa = PBXGroup;
 			children = (
-				A4CD9AB428A811C500E8D2A0 /* PokedexApp.swift */,
-				A4CD9AB628A811C500E8D2A0 /* ContentView.swift */,
-				A4CD9AB828A811C700E8D2A0 /* Assets.xcassets */,
+				A4CD9AF828A81C2500E8D2A0 /* Extensions */,
+				A4CD9AF628A81BFE00E8D2A0 /* SupportingFiles */,
+				A4CD9ADE28A81B0F00E8D2A0 /* Fonts */,
+				A4CD9AF728A81C1700E8D2A0 /* Views */,
+				A4CD9AF528A81B4900E8D2A0 /* Info.plist */,
 				A4CD9ABA28A811C700E8D2A0 /* Preview Content */,
 			);
 			path = Pokedex;
@@ -118,13 +124,47 @@
 			path = PokedexTests;
 			sourceTree = "<group>";
 		};
-		A4CD9ACE28A811C700E8D2A0 /* PokedexUITests */ = {
+		A4CD9ADE28A81B0F00E8D2A0 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				A4CD9ACF28A811C700E8D2A0 /* PokedexUITests.swift */,
-				A4CD9AD128A811C700E8D2A0 /* PokedexUITestsLaunchTests.swift */,
+				A4CD9AE428A81B2400E8D2A0 /* TitilliumWeb-Black.ttf */,
+				A4CD9AE828A81B2400E8D2A0 /* TitilliumWeb-Bold.ttf */,
+				A4CD9AE028A81B2400E8D2A0 /* TitilliumWeb-BoldItalic.ttf */,
+				A4CD9AE128A81B2400E8D2A0 /* TitilliumWeb-ExtraLight.ttf */,
+				A4CD9AE528A81B2400E8D2A0 /* TitilliumWeb-ExtraLightItalic.ttf */,
+				A4CD9AE228A81B2400E8D2A0 /* TitilliumWeb-Italic.ttf */,
+				A4CD9AE328A81B2400E8D2A0 /* TitilliumWeb-Light.ttf */,
+				A4CD9AE628A81B2400E8D2A0 /* TitilliumWeb-LightItalic.ttf */,
+				A4CD9AE928A81B2400E8D2A0 /* TitilliumWeb-Regular.ttf */,
+				A4CD9ADF28A81B2400E8D2A0 /* TitilliumWeb-SemiBold.ttf */,
+				A4CD9AE728A81B2400E8D2A0 /* TitilliumWeb-SemiBoldItalic.ttf */,
 			);
-			path = PokedexUITests;
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		A4CD9AF628A81BFE00E8D2A0 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				A4CD9AB428A811C500E8D2A0 /* PokedexApp.swift */,
+				A4CD9AB828A811C700E8D2A0 /* Assets.xcassets */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		A4CD9AF728A81C1700E8D2A0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A4CD9AB628A811C500E8D2A0 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A4CD9AF828A81C2500E8D2A0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A4CD9AF928A81C3200E8D2A0 /* Text+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,24 +205,6 @@
 			productReference = A4CD9AC128A811C700E8D2A0 /* PokedexTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A4CD9ACA28A811C700E8D2A0 /* PokedexUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A4CD9ADB28A811C700E8D2A0 /* Build configuration list for PBXNativeTarget "PokedexUITests" */;
-			buildPhases = (
-				A4CD9AC728A811C700E8D2A0 /* Sources */,
-				A4CD9AC828A811C700E8D2A0 /* Frameworks */,
-				A4CD9AC928A811C700E8D2A0 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A4CD9ACD28A811C700E8D2A0 /* PBXTargetDependency */,
-			);
-			name = PokedexUITests;
-			productName = PokedexUITests;
-			productReference = A4CD9ACB28A811C700E8D2A0 /* PokedexUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -197,10 +219,6 @@
 						CreatedOnToolsVersion = 13.4.1;
 					};
 					A4CD9AC028A811C700E8D2A0 = {
-						CreatedOnToolsVersion = 13.4.1;
-						TestTargetID = A4CD9AB028A811C500E8D2A0;
-					};
-					A4CD9ACA28A811C700E8D2A0 = {
 						CreatedOnToolsVersion = 13.4.1;
 						TestTargetID = A4CD9AB028A811C500E8D2A0;
 					};
@@ -221,7 +239,6 @@
 			targets = (
 				A4CD9AB028A811C500E8D2A0 /* Pokedex */,
 				A4CD9AC028A811C700E8D2A0 /* PokedexTests */,
-				A4CD9ACA28A811C700E8D2A0 /* PokedexUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -232,18 +249,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4CD9ABC28A811C700E8D2A0 /* Preview Assets.xcassets in Resources */,
+				A4CD9AEC28A81B2400E8D2A0 /* TitilliumWeb-ExtraLight.ttf in Resources */,
+				A4CD9AEA28A81B2400E8D2A0 /* TitilliumWeb-SemiBold.ttf in Resources */,
+				A4CD9AF428A81B2400E8D2A0 /* TitilliumWeb-Regular.ttf in Resources */,
+				A4CD9AEE28A81B2400E8D2A0 /* TitilliumWeb-Light.ttf in Resources */,
+				A4CD9AF128A81B2400E8D2A0 /* TitilliumWeb-LightItalic.ttf in Resources */,
+				A4CD9AED28A81B2400E8D2A0 /* TitilliumWeb-Italic.ttf in Resources */,
+				A4CD9AF328A81B2400E8D2A0 /* TitilliumWeb-Bold.ttf in Resources */,
+				A4CD9AEB28A81B2400E8D2A0 /* TitilliumWeb-BoldItalic.ttf in Resources */,
+				A4CD9AF228A81B2400E8D2A0 /* TitilliumWeb-SemiBoldItalic.ttf in Resources */,
 				A4CD9AB928A811C700E8D2A0 /* Assets.xcassets in Resources */,
+				A4CD9AF028A81B2400E8D2A0 /* TitilliumWeb-ExtraLightItalic.ttf in Resources */,
+				A4CD9AEF28A81B2400E8D2A0 /* TitilliumWeb-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A4CD9ABF28A811C700E8D2A0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A4CD9AC928A811C700E8D2A0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -257,6 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4CD9AFA28A81C3200E8D2A0 /* Text+Extensions.swift in Sources */,
 				A4CD9AB728A811C500E8D2A0 /* ContentView.swift in Sources */,
 				A4CD9AB528A811C500E8D2A0 /* PokedexApp.swift in Sources */,
 			);
@@ -270,15 +292,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A4CD9AC728A811C700E8D2A0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A4CD9AD028A811C700E8D2A0 /* PokedexUITests.swift in Sources */,
-				A4CD9AD228A811C700E8D2A0 /* PokedexUITestsLaunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -286,11 +299,6 @@
 			isa = PBXTargetDependency;
 			target = A4CD9AB028A811C500E8D2A0 /* Pokedex */;
 			targetProxy = A4CD9AC228A811C700E8D2A0 /* PBXContainerItemProxy */;
-		};
-		A4CD9ACD28A811C700E8D2A0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A4CD9AB028A811C500E8D2A0 /* Pokedex */;
-			targetProxy = A4CD9ACC28A811C700E8D2A0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -345,7 +353,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -399,7 +407,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -420,6 +428,7 @@
 				DEVELOPMENT_TEAM = 5P4JJDT7CR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Pokedex/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -434,7 +443,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -449,6 +458,7 @@
 				DEVELOPMENT_TEAM = 5P4JJDT7CR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Pokedex/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -463,7 +473,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -507,42 +517,6 @@
 			};
 			name = Release;
 		};
-		A4CD9ADC28A811C700E8D2A0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5P4JJDT7CR;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.urielh.PokedexUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Pokedex;
-			};
-			name = Debug;
-		};
-		A4CD9ADD28A811C700E8D2A0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5P4JJDT7CR;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.urielh.PokedexUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Pokedex;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -569,15 +543,6 @@
 			buildConfigurations = (
 				A4CD9AD928A811C700E8D2A0 /* Debug */,
 				A4CD9ADA28A811C700E8D2A0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A4CD9ADB28A811C700E8D2A0 /* Build configuration list for PBXNativeTarget "PokedexUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A4CD9ADC28A811C700E8D2A0 /* Debug */,
-				A4CD9ADD28A811C700E8D2A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

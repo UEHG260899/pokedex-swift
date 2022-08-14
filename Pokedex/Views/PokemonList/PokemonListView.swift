@@ -16,11 +16,22 @@ struct PokemonListView: View {
             Color("Background")
                 .ignoresSafeArea()
             
-            VStack {
-                PokemonTextField(query: $query, placeholderText: "Search a pokemon...", keyBoardType: .default)
+            VStack(alignment: .leading, spacing: 5) {
+                
+                Text("Let´s catch them all!")
+                    .customFont(.titilliumBold, size: 28, relativeTo: .title)
                     .padding(.horizontal)
+                    .foregroundColor(Color("Accent"))
+                
+                PokemonTextField(query: $query,
+                                 placeholderText: "Search a pokemon...",
+                                 keyBoardType: .default)
+                    .padding(.horizontal)
+                
+                PokemonGrid()
             }
         }
+        .navigationBarHidden(true)
     }
 }
 

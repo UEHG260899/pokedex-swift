@@ -11,6 +11,7 @@
 		A46766CC28A86F100072D588 /* PokemonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46766CB28A86F100072D588 /* PokemonListView.swift */; };
 		A46766CE28A870AB0072D588 /* TextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46766CD28A870AB0072D588 /* TextField+Extensions.swift */; };
 		A46766D128A872280072D588 /* PokemonTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46766D028A872280072D588 /* PokemonTextField.swift */; };
+		A46766D328A8773B0072D588 /* PokemonGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46766D228A8773B0072D588 /* PokemonGrid.swift */; };
 		A4A456A328A81FFE00CE5E05 /* AppConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A456A228A81FFE00CE5E05 /* AppConfigurations.swift */; };
 		A4A456A528A822C000CE5E05 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4A456A428A822C000CE5E05 /* Launch.storyboard */; };
 		A4CD9AB528A811C500E8D2A0 /* PokedexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD9AB428A811C500E8D2A0 /* PokedexApp.swift */; };
@@ -46,6 +47,7 @@
 		A46766CB28A86F100072D588 /* PokemonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListView.swift; sourceTree = "<group>"; };
 		A46766CD28A870AB0072D588 /* TextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+Extensions.swift"; sourceTree = "<group>"; };
 		A46766D028A872280072D588 /* PokemonTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTextField.swift; sourceTree = "<group>"; };
+		A46766D228A8773B0072D588 /* PokemonGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonGrid.swift; sourceTree = "<group>"; };
 		A4A456A228A81FFE00CE5E05 /* AppConfigurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurations.swift; sourceTree = "<group>"; };
 		A4A456A428A822C000CE5E05 /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		A4CD9AB128A811C500E8D2A0 /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +94,7 @@
 			children = (
 				A46766CF28A872150072D588 /* Components */,
 				A46766CB28A86F100072D588 /* PokemonListView.swift */,
+				A46766D228A8773B0072D588 /* PokemonGrid.swift */,
 			);
 			path = PokemonList;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				A46766C928A86E480072D588 /* RootView.swift in Sources */,
 				A4CD9AFA28A81C3200E8D2A0 /* Text+Extensions.swift in Sources */,
 				A46766CC28A86F100072D588 /* PokemonListView.swift in Sources */,
+				A46766D328A8773B0072D588 /* PokemonGrid.swift in Sources */,
 				A46766D128A872280072D588 /* PokemonTextField.swift in Sources */,
 				A4A456A328A81FFE00CE5E05 /* AppConfigurations.swift in Sources */,
 				A4CD9AB528A811C500E8D2A0 /* PokedexApp.swift in Sources */,

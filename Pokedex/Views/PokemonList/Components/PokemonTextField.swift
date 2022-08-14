@@ -23,7 +23,7 @@ struct PokemonTextField: View {
             TextField("", text: $query)
                 .foregroundColor(.white)
         }
-        .padding()
+        .padding(12)
         .background(
             RoundedRectangle(cornerRadius: 12)
                 .stroke(lineWidth: 1)

@@ -24,6 +24,8 @@ struct PokemonCell: View {
             
             Text("Bulbasaur")
                 .customFont(.titilliumRegular, size: 17, relativeTo: .body)
+                .lineLimit(2)
+                .minimumScaleFactor(0.5)
                 .padding()
         }
         .background(Color.white)

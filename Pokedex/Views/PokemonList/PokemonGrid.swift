@@ -15,46 +15,16 @@ struct PokemonGrid: View {
     }
     
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: pokemonColumns, spacing: 20) {
-                Text("Hola")
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.blue)
-                Text("Hola")
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.blue)
-                Text("Hola")
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.blue)
-                Text("Hola")
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.blue)
-                Text("Hola")
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.blue)
-                Text("Hola")
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.blue)
-                Text("Hola")
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.blue)
-                Text("Hola")
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.blue)
-                Text("Hola")
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.blue)
+        GeometryReader { proxy in
+            ScrollView {
+                LazyVGrid(columns: pokemonColumns, spacing: 20) {
+                    ForEach(1...10, id: \.self) { _ in
+                        PokemonCell(width: proxy.size.width / 2 - 20,
+                                    pokemonTypeColor: .plantType)
+                    }
+                }
+                .padding()
             }
-            .padding()
         }
     }
 }

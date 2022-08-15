@@ -30,6 +30,7 @@
 		A4CD9AF328A81B2400E8D2A0 /* TitilliumWeb-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4CD9AE828A81B2400E8D2A0 /* TitilliumWeb-Bold.ttf */; };
 		A4CD9AF428A81B2400E8D2A0 /* TitilliumWeb-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4CD9AE928A81B2400E8D2A0 /* TitilliumWeb-Regular.ttf */; };
 		A4CD9AFA28A81C3200E8D2A0 /* Text+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD9AF928A81C3200E8D2A0 /* Text+Extensions.swift */; };
+		A4D116E228A9BB2E00DF5204 /* PokemonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D116E128A9BB2E00DF5204 /* PokemonCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		A4CD9AE928A81B2400E8D2A0 /* TitilliumWeb-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-Regular.ttf"; sourceTree = "<group>"; };
 		A4CD9AF528A81B4900E8D2A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A4CD9AF928A81C3200E8D2A0 /* Text+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Extensions.swift"; sourceTree = "<group>"; };
+		A4D116E128A9BB2E00DF5204 /* PokemonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				A46766D028A872280072D588 /* PokemonTextField.swift */,
+				A4D116E128A9BB2E00DF5204 /* PokemonCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				A46766CC28A86F100072D588 /* PokemonListView.swift in Sources */,
 				A46766D328A8773B0072D588 /* PokemonGrid.swift in Sources */,
 				A46766D128A872280072D588 /* PokemonTextField.swift in Sources */,
+				A4D116E228A9BB2E00DF5204 /* PokemonCell.swift in Sources */,
 				A4A456A328A81FFE00CE5E05 /* AppConfigurations.swift in Sources */,
 				A4CD9AB528A811C500E8D2A0 /* PokedexApp.swift in Sources */,
 				A46766CE28A870AB0072D588 /* TextField+Extensions.swift in Sources */,

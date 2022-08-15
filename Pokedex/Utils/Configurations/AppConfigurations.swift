@@ -22,4 +22,24 @@ struct AppConfigurations {
         case titilliumSemiBoldItalic = "TitilliumWeb-SemiBoldItalic"
 
     }
+    
+    enum PokemonTypeColors: String {
+        case bugType = "BugType"
+        case dragonTyoe = "DragonType"
+        case earthType = "EarthType"
+        case electricType = "ElectricType"
+        case fairyType = "FairyType"
+        case fightType = "FightType"
+        case fireType = "FireType"
+        case ghostType = "GhostType"
+        case iceType = "IceType"
+        case normalType = "NormalType"
+        case plantType = "PlantType"
+        case psichicType = "PsichicType"
+        case rockType = "RockType"
+        case sinisterType = "SinisterType"
+        case steelType = "SteelType"
+        case venomType = "VenomType"
+        case waterType = "WaterType"
+    }
 }

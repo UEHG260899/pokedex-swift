@@ -19,7 +19,7 @@ struct PokemonGrid: View {
             ScrollView {
                 LazyVGrid(columns: pokemonColumns, spacing: 20) {
                     ForEach(1...10, id: \.self) { _ in
-                        NavigationLink(destination: Text("Hello, Pokemon")) {
+                        NavigationLink(destination: PokemonDetailsView()) {
                             PokemonCell(width: proxy.size.width / 2 - 20,
                                         pokemonTypeColor: .plantType)
                         }
@@ -27,6 +27,7 @@ struct PokemonGrid: View {
                 }
                 .padding()
             }
+            .padding(.bottom)
         }
     }
 }

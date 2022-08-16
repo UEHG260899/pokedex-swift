@@ -12,6 +12,7 @@ struct RootView: View {
         NavigationView {
             PokemonListView()
         }
+        .navigationViewStyle(.stack)
     }
 }
 

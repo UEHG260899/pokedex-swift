@@ -137,7 +137,7 @@ class NetworkerTests: XCTestCase {
         // when
         sut.decodable(for: invalidRequest, type: MockPost.self) { result in
             switch result {
-            case .success(let model):
+            case .success(_):
                 assertionFailure()
             case .failure(_):
                 expectation.fulfill()

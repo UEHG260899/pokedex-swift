@@ -27,7 +27,7 @@ struct PokemonGrid: View {
                 }
                 .padding()
             }
-            .padding(.bottom)
+            .padding(.bottom, 0.1)
         }
     }
 }

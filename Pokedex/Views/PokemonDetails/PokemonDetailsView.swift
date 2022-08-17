@@ -33,7 +33,7 @@ struct PokemonDetailsView: View {
                             Text(String(num))
                         }
                     }
-                    .padding(.bottom) // Solves ScrollView not respecting bottom safe area
+                    .padding(.bottom, 0.1) // Solves ScrollView not respecting bottom safe area
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(

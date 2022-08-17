@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Networker {
+class Networker: ObservableObject {
     
     enum HTTPMethods: String {
         case get = "GET"

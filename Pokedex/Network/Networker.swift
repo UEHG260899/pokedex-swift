@@ -22,6 +22,9 @@ struct Networker {
     
     func response(for request: URLRequest, completion: @escaping (Result<(HTTPURLResponse, Data), NetworkerErrors>) -> (Void)) {
         URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            debugPrint(response)
+            
             guard let response = response,
                   let data = data else {
                 debugPrint(error?.localizedDescription)
@@ -60,10 +63,12 @@ struct Networker {
             switch result {
             case .success(let data):
                 do {
+                    debugPrint(data)
                     let decoder = JSONDecoder()
                     let decodedObject = try decoder.decode(type, from: data)
                     completion(.success(decodedObject))
                 } catch {
+                    debugPrint(error)
                     completion(.failure(.deserializationFailed(String(describing: type))))
                 }
             case .failure(let error):

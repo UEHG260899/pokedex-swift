@@ -11,8 +11,7 @@ struct PokemonListView: View {
     
     @State var query = ""
     @State var isRotated = false
-    @EnvironmentObject private var networker: Networker
-    @StateObject private var viewModel = PokemonListViewModel(networker: Networker())
+    @StateObject private var viewModel = PokemonListViewModel(service: PokemonListService(networker: Networker()))
     
     var body: some View {
         ZStack {
@@ -34,8 +33,11 @@ struct PokemonListView: View {
                 if viewModel.networkState == .loading {
                     LoadingView(isRotated: $isRotated, progressTitle: "Fetching Pokemons")
                 } else {
-                    PokemonGrid()
+                    PokemonGrid(pokemons: viewModel.pokemons)
                 }
+            }
+            .onAppear {
+                viewModel.fetchPokemons()
             }
         }
         .navigationBarHidden(true)

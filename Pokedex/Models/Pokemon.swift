@@ -16,6 +16,11 @@ struct Pokemon: Decodable {
         case url
     }
     
+    init(name: String, url: URL) {
+        self.name = name
+        self.url = url
+    }
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         name = try container.decode(String.self, forKey: .name)

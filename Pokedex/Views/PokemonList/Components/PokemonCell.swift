@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PokemonCell: View {
     
+    let pokemon: BasicPokemonViewModel
     let width: CGFloat
     let pokemonTypeColor: AppConfigurations.PokemonTypeColors
     
@@ -22,7 +23,7 @@ struct PokemonCell: View {
                     .frame(width: 100, height: 100)
             }
             
-            Text("Bulbasaur")
+            Text(pokemon.name.capitalized)
                 .customFont(.titilliumRegular, size: 17, relativeTo: .body)
                 .lineLimit(2)
                 .multilineTextAlignment(.center)
@@ -37,7 +38,8 @@ struct PokemonCell: View {
 
 struct PokeminCell_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonCell(width: 200, pokemonTypeColor: .plantType)
+        let pokemon = BasicPokemonViewModel.init(pokemon: Pokemon(name: "Bulbasaur", url: URL(string: "https://pokeapi.co/")!))
+        PokemonCell(pokemon: pokemon,  width: 200, pokemonTypeColor: .plantType)
             .previewLayout(.sizeThatFits)
     }
 }

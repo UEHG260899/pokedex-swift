@@ -10,6 +10,8 @@ import SwiftUI
 struct PokemonListView: View {
     
     @State var query = ""
+    @State var isRotated = false
+    @StateObject private var viewModel = PokemonListViewModel(service: PokemonListService(networker: Networker()))
     
     var body: some View {
         ZStack {
@@ -28,7 +30,14 @@ struct PokemonListView: View {
                                  keyBoardType: .default)
                     .padding(.horizontal)
                 
-                PokemonGrid()
+                if viewModel.networkState == .loading {
+                    LoadingView(isRotated: $isRotated, progressTitle: "Fetching Pokemons")
+                } else {
+                    PokemonGrid(pokemons: viewModel.pokemons)
+                }
+            }
+            .onAppear {
+                viewModel.fetchPokemons()
             }
         }
         .navigationBarHidden(true)

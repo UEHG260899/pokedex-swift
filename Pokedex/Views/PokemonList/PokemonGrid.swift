@@ -9,6 +9,8 @@ import SwiftUI
 
 struct PokemonGrid: View {
     
+    let pokemons: [BasicPokemonViewModel]
+    
     var pokemonColumns: [GridItem] {
         [GridItem(.flexible(minimum: 150, maximum: .infinity), spacing: 20),
          GridItem(.flexible(minimum: 150, maximum: .infinity), spacing: 20)]
@@ -18,22 +20,22 @@ struct PokemonGrid: View {
         GeometryReader { proxy in
             ScrollView {
                 LazyVGrid(columns: pokemonColumns, spacing: 20) {
-                    ForEach(1...10, id: \.self) { _ in
+                    ForEach(pokemons, id: \.url) { pokemon in
                         NavigationLink(destination: PokemonDetailsView()) {
-                            PokemonCell(width: proxy.size.width / 2 - 20,
+                            PokemonCell(pokemon: pokemon, width: proxy.size.width / 2 - 20,
                                         pokemonTypeColor: .plantType)
                         }
                     }
                 }
                 .padding()
             }
-            .padding(.bottom)
+            .padding(.bottom, 0.1)
         }
     }
 }
 
 struct PokemonGrid_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonGrid()
+        PokemonGrid(pokemons: [BasicPokemonViewModel]())
     }
 }

@@ -37,7 +37,10 @@ extension PokemonListView {
                         completion?(true)
                     }
                 case .failure(let error):
-                    print("F")
+                    DispatchQueue.main.async {
+                        self.networkState = .failure
+                        completion?(false)
+                    }
                 }
             }
         }

@@ -13,11 +13,14 @@ class PokemonListViewModelTests: XCTestCase {
     var sut: PokemonListView.PokemonListViewModel!
     var networker: Networker!
     var service: PokemonListServiceType!
+    var mockService: MockPokemonListService {
+        service as! MockPokemonListService
+    }
     
     override func setUp() {
         super.setUp()
         networker = Networker()
-        service = PokemonListService(networker: networker)
+        service = MockPokemonListService()
         sut = PokemonListView.PokemonListViewModel(service: service)
     }
     
@@ -28,6 +31,18 @@ class PokemonListViewModelTests: XCTestCase {
         super.tearDown()
     }
     
+    // MARK: - When methods
+    
+    private func whenFetchPokemons() {
+        let exp = expectation(description: "Completion wasn´t called")
+        
+        sut.fetchPokemons { _ in
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 0.2)
+    }
+        
     func testIfServiceIsSetOnInit() {
         XCTAssertNotNil(sut.service)
     }
@@ -44,26 +59,37 @@ class PokemonListViewModelTests: XCTestCase {
         XCTAssertEqual(sut.pokemons.count, 0)
     }
     
-    func testIfPokemonsIsNotEmptyWhenFetchPokemonsIsCalled() {
-        // when
-        sut.fetchPokemons()
-        
-        // then
-        XCTAssertTrue(!sut.pokemons.isEmpty)
-    }
-    
-    func testIfNetworkStateIsChangedToSuccessWhenNetworkCallCompletes() {
+    func testIfNetworkStateChangesToSuccessWhenSuccessfulResponse() {
         // given
-        let exp = expectation(description: "Network call should complete")
-
+        mockService.shouldCompleteSuccessfully = true
+        
+        
         // when
-        sut.fetchPokemons { _ in
-            exp.fulfill()
-        }
+        whenFetchPokemons()
         
         // then
-        wait(for: [exp], timeout: 1)
         XCTAssertEqual(sut.networkState, .success)
     }
 
+    func testIfNetworkStateChangesToFailureWhenErrorIsRecieved() {
+        // given
+        mockService.shouldCompleteSuccessfully = false
+        
+        // when
+        whenFetchPokemons()
+        
+        // then
+        XCTAssertEqual(sut.networkState, .failure)
+    }
+    
+    func testIfPokemonsArrayCountChangesWhenResponseIsSuccessful() {
+        // given
+        mockService.shouldCompleteSuccessfully = true
+        
+        // when
+        whenFetchPokemons()
+        
+        // then
+        XCTAssertEqual(sut.pokemons.count, 4)
+    }
 }

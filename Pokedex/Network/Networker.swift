@@ -7,26 +7,31 @@
 
 import Foundation
 
+enum HTTPMethods: String {
+    case get = "GET"
+}
+
+enum NetworkerErrors: Error, Equatable {
+    case unknown
+    case invalidResponse(URLResponse)
+    case requestFailed(HTTPURLResponse)
+    case deserializationFailed(String)
+}
+
+
+
+
 struct Networker {
     
-    enum HTTPMethods: String {
-        case get = "GET"
-    }
+    let session: URLSessionProtocol
     
-    enum NetworkerErrors: Error {
-        case unknown
-        case invalidResponse(URLResponse)
-        case requestFailed(HTTPURLResponse)
-        case deserializationFailed(String)
-    }
-    
-    func response(for request: URLRequest, completion: @escaping (Result<(HTTPURLResponse, Data), NetworkerErrors>) -> (Void)) {
-        URLSession.shared.dataTask(with: request) { data, response, error in
+    @discardableResult
+    func response(for request: URLRequest, completion: @escaping (Result<(HTTPURLResponse, Data), NetworkerErrors>) -> (Void)) -> URLSessionTaskProtocol {
+        let task = session.makeDataTask(with: request) { data, response, error in
             
-            debugPrint(response)
-            
-            guard let response = response,
-                  let data = data else {
+            guard let data = data,
+                  let response = response,
+                  error == nil else {
                 debugPrint(error?.localizedDescription)
                 completion(.failure(.unknown))
                 return
@@ -38,12 +43,15 @@ struct Networker {
             }
             
             completion(.success((httpResponse, data)))
-            
-        }.resume()
+        }
+        task.resume()
+        return task
     }
     
-    func data(for request: URLRequest, completion: @escaping (Result<Data, NetworkerErrors>) -> (Void)) {
-        response(for: request) { result in
+    @discardableResult
+    func data(for request: URLRequest, completion: @escaping (Result<Data, NetworkerErrors>) -> (Void)) -> URLSessionTaskProtocol {
+        return response(for: request) { result in
+            
             switch result {
             case .success((let response, let data)):
                 guard 200..<300 ~= response.statusCode else {
@@ -58,17 +66,14 @@ struct Networker {
         }
     }
     
-    func decodable<T: Decodable>(for request: URLRequest, type: T.Type, completion: @escaping (Result<T, NetworkerErrors>) -> (Void)) {
-        data(for: request) { result in
+    func decodable<T: Decodable>(for request: URLRequest, type: T.Type, completion: @escaping (Result<T, NetworkerErrors>) -> (Void)) -> URLSessionTaskProtocol {
+        return data(for: request) { result in
             switch result {
             case .success(let data):
                 do {
-                    debugPrint(data)
-                    let decoder = JSONDecoder()
-                    let decodedObject = try decoder.decode(type, from: data)
-                    completion(.success(decodedObject))
+                    let decodedData = try JSONDecoder().decode(type, from: data)
+                    completion(.success(decodedData))
                 } catch {
-                    debugPrint(error)
                     completion(.failure(.deserializationFailed(String(describing: type))))
                 }
             case .failure(let error):

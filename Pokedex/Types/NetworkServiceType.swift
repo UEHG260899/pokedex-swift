@@ -18,14 +18,14 @@ protocol NetworkServiceType {
     ///   - path: Endpoint path
     ///   - parameters: Query parameters
     /// - Returns: Complete URLRequest
-    func buildRequest(method: Networker.HTTPMethods, path: String, parameters: [String: String]) -> URLRequest
+    func buildRequest(method: HTTPMethods, path: String, parameters: [String: String]) -> URLRequest
     
     /// Function that builds an URLRequest from a previously formed URL
     /// - Parameters:
     ///   - url: URL that will conform the request
     ///   - method: HTTP method to be used in the request
     /// - Returns: Complete URL
-    func buildRequest(url: URL, method: Networker.HTTPMethods) -> URLRequest
+    func buildRequest(url: URL, method: HTTPMethods) -> URLRequest
 }
 
 extension NetworkServiceType {

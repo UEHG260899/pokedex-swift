@@ -19,7 +19,7 @@ class MockPokemonListService: PokemonListServiceType {
         Pokemon(name: "Pikacchu4", url: URL(string: "https://www.pokemon.com/el/pokedex/bulbasaur")!)
     ]
     
-    func pokemons(limit: Int, offset: Int, completion: @escaping (Result<[Pokemon], Networker.NetworkerErrors>) -> Void) {
+    func pokemons(limit: Int, offset: Int, completion: @escaping (Result<[Pokemon], NetworkerErrors>) -> Void) {
         if shouldCompleteSuccessfully {
             completion(.success(pokemons))
         } else {

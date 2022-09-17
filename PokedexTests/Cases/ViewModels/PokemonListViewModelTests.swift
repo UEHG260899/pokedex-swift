@@ -19,7 +19,7 @@ class PokemonListViewModelTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        networker = Networker()
+        networker = Networker(session: URLSession.shared)
         service = MockPokemonListService()
         sut = PokemonListView.PokemonListViewModel(service: service)
     }

@@ -11,140 +11,162 @@ import XCTest
 class NetworkerTests: XCTestCase {
 
     var sut: Networker!
+    var mockSession: MockURLSession!
+    var mockTask: MockURLSessionDataTask!
     var validRequest: URLRequest!
     var invalidRequest: URLRequest!
     
+    var dummyData: Data {
+        Data()
+    }
+    
+    var dummyValidResponse: HTTPURLResponse {
+        HTTPURLResponse(url: validRequest.url!, statusCode: 200, httpVersion: "", headerFields: [:])!
+    }
+    
+    var dummyInvalidResponse: URLResponse {
+        URLResponse(url: invalidRequest.url!, mimeType: "application/json", expectedContentLength: 3414, textEncodingName: "utf-8")
+    }
+    
+    var dummyError: Error {
+        NSError(domain: "com.pokedex", code: 10)
+    }
+    
     override func setUp() {
         super.setUp()
-        sut = Networker()
-        validRequest = URLRequest(url: URL(string: "https://pokeapi.co/api/v2/pokemon/ditto")!)
+        mockSession = MockURLSession()
+        sut = Networker(session: mockSession)
+        validRequest = URLRequest(url: URL(string: "https://pokeapi.co/api/v2/pokemon?offset=41&limit=50")!)
         invalidRequest = URLRequest(url: URL(string: "Hola")!)
     }
     
     override func tearDown() {
+        mockSession = nil
+        mockSession = nil
         sut = nil
         validRequest = nil
         invalidRequest = nil
         super.tearDown()
+    }
+    
+    // MARK: - When functions
+    private func whenSimpleResposeMethodCalled() {
+        mockTask = sut.response(for: validRequest, completion: {_ in}) as! MockURLSessionDataTask
+    }
+    
+    private func whenResponseMethodCalled(data: Data? = nil,
+                                          response: URLResponse? = nil,
+                                          error: Error? = nil) -> (calledCompletion: Bool, response: HTTPURLResponse?, data: Data?, error: NetworkerErrors?) {
+        
+        var calledCompletion = false
+        var recievedError: NetworkerErrors? = nil
+        var recievedData: Data? = nil
+        var recievedResponse: HTTPURLResponse? = nil
+        
+        let task = sut.response(for: validRequest) { result in
+            calledCompletion = true
+            switch result {
+            case .success((let response, let data)):
+                recievedData = data
+                recievedResponse = response
+            case .failure(let error):
+                recievedError = error
+            }
+            
+        } as! MockURLSessionDataTask
+        
+        task.completionHandler(data, response, error)
+        
+        return (calledCompletion, recievedResponse, recievedData, recievedError)
     }
         
     func testIfNetworkerCanBeInstantiated() {
         // then
         XCTAssertNotNil(sut)
     }
+        
+    func testIfNetworkerSessionSetsInInitializer() {
+        XCTAssertTrue(sut.session === mockSession)
+    }
     
-    func testIfResponseMethodReturnsStatusCode200WithValidRequest() {
-        // given
-        let expectation = XCTestExpectation(description: "Response for network call")
-        var testValue = 0
+    func testResponseMethodCallsExpectedURL() {
         // when
-        sut.response(for: validRequest) { response in
-            switch response {
-            case .success((let urlResponse, _)):
-                testValue = urlResponse.statusCode
-                expectation.fulfill()
-            case .failure(_):
-                assertionFailure()
-            }
-        }
+        whenSimpleResposeMethodCalled()
         
         // then
-        wait(for: [expectation], timeout: 10)
-        XCTAssertEqual(testValue, 200)
+        XCTAssertEqual(mockTask.request, validRequest)
     }
     
-    func testIfResponseMethodReturnsErrorWhenRequestIsInvalid() {
-        // given
-        let expectation = XCTestExpectation(description: "Response for network call")
+    func testResponseMethodCallsResumeOnTask() {
         // when
-        
-        sut.response(for: invalidRequest) { response in
-            switch response {
-            case .success((_, _)):
-                assertionFailure()
-            case .failure(_):
-                expectation.fulfill()
-            }
-        }
+        whenSimpleResposeMethodCalled()
         
         // then
-        wait(for: [expectation], timeout: 10)
+        XCTAssertTrue(mockTask.calledResume)
     }
     
-    func testIfDataMethodReturnsDataWhenRequestIsValid() {
+    func testResponseMethodCallsCompletion() {
         // given
-        let expectation = XCTestExpectation(description: "Response for network call")
-        var tesData: Data? = nil
-        // when
-        sut.data(for: validRequest) { response in
-            switch response {
-            case .success(let data):
-                tesData = data
-                expectation.fulfill()
-            case .failure(_):
-                assertionFailure()
-            }
-        }
-        
-        wait(for: [expectation], timeout: 10)
-        XCTAssertNotNil(tesData)
-    }
-    
-    func testIfDataMethodReturnsErrorWhenRequestIsNotValid() {
-        // given
-        let expectation = XCTestExpectation(description: "Response for network call")
-        
-        // when
-        sut.data(for: invalidRequest) { response in
-            switch response {
-            case .success(_):
-                assertionFailure()
-            case .failure(_):
-                expectation.fulfill()
-            }
-        }
+        let result = whenResponseMethodCalled()
         
         // then
-        wait(for: [expectation], timeout: 10)
+        XCTAssertTrue(result.calledCompletion)
     }
     
-    func testIfDecodableMethodReturnsAModelWhenRequestIsValid() {
-        // given
-        let jsonRequest = URLRequest(url: URL(string: "https://jsonplaceholder.typicode.com/posts/1")!)
-        let expectation = XCTestExpectation(description: "Response for network call")
-        var testableValue: MockPost!
-        
+    func testResponseMethodThrowsUnknownErrorWhenNoDataIsRecieved() {
         // when
-        sut.decodable(for: jsonRequest, type: MockPost.self) { result in
-            switch result {
-            case .success(let model):
-                testableValue = model
-                expectation.fulfill()
-            case .failure(_):
-                assertionFailure()
-            }
-        }
+        let result = whenResponseMethodCalled(response: dummyValidResponse)
         
         // then
-        wait(for: [expectation], timeout: 5)
-        XCTAssertEqual(testableValue, MockPost(id: 1, title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit", body: "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto", userId: 1))
+        XCTAssertEqual(result.error, .unknown)
     }
     
-    func testIfDecodableMethodReturnsErrorWhenRequestIsInvalid() {
-        // given
-        let expectation = XCTestExpectation(description: "Response for network call")
-        
+    func testResponseMethodThrowsUnknownErrorWhenNoResponseIsRecieved() {
         // when
-        sut.decodable(for: invalidRequest, type: MockPost.self) { result in
-            switch result {
-            case .success(_):
-                assertionFailure()
-            case .failure(_):
-                expectation.fulfill()
-            }
-        }
+        let result = whenResponseMethodCalled(data: dummyData)
         
         // then
-        wait(for: [expectation], timeout: 5)
+        XCTAssertEqual(result.error, .unknown)
     }
+    
+    func testResponseMethodThrowsUnknownErrorWhenErrorIsNotNil() {
+        // when
+        let result = whenResponseMethodCalled(data: dummyData, response: dummyValidResponse, error: dummyError)
+        
+        // then
+        XCTAssertEqual(result.error, .unknown)
+        
+    }
+    
+    func testResponseMethodThrowInvalidResponseWhenURLResponseIsNotValid() {
+        // when
+        let result = whenResponseMethodCalled(data: dummyData, response: dummyInvalidResponse)
+        
+        // then
+        if case .invalidResponse(let error) = result.error {
+            XCTAssertEqual(error.url, dummyInvalidResponse.url)
+        } else {
+            assertionFailure()
+        }
+    }
+    
+    func testResponseMethodCompletesWithDataAndResponseWhenNoErrors() {
+        // when
+        let result = whenResponseMethodCalled(data: dummyData, response: dummyValidResponse)
+
+        // then
+        XCTAssertNotNil(result.data)
+        XCTAssertNotNil(result.response)
+    }
+    
+    func testResponseMethodCompletesWithDataAndResponseEqualToDataTask() {
+        // when
+        let result = whenResponseMethodCalled(data: dummyData, response: dummyValidResponse)
+        
+        // then
+        XCTAssertEqual(result.data, dummyData)
+        XCTAssertEqual(result.response?.url, dummyValidResponse.url)
+    }
+    
+    
 }

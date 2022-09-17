@@ -15,7 +15,7 @@ class PokemonListServiceTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        networker = Networker()
+        networker = Networker(session: URLSession.shared)
         sut = PokemonListService(networker: networker)
     }
     

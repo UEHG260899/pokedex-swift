@@ -11,7 +11,7 @@ struct PokemonListView: View {
     
     @State var query = ""
     @State var isRotated = false
-    @StateObject private var viewModel = PokemonListViewModel(service: PokemonListService(networker: Networker()))
+    @StateObject private var viewModel = PokemonListViewModel(service: PokemonListService(networker: Networker(session: URLSession.shared)))
     
     var body: some View {
         ZStack {

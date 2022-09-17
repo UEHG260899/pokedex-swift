@@ -13,7 +13,7 @@ protocol PokemonListServiceType {
     ///   - limit: Number of pokemons to be fetched
     ///   - offset: Offset quantity
     ///   - completion: Completion handler for the request
-    func pokemons(limit: Int, offset: Int, completion: @escaping (Result<[Pokemon], Networker.NetworkerErrors>) -> Void)
+    func pokemons(limit: Int, offset: Int, completion: @escaping (Result<[Pokemon], NetworkerErrors>) -> Void)
 }
 
 struct PokemonListService: NetworkServiceType, PokemonListServiceType {
@@ -24,7 +24,7 @@ struct PokemonListService: NetworkServiceType, PokemonListServiceType {
         self.networker = networker
     }
     
-    func buildRequest(method: Networker.HTTPMethods, path: String, parameters: [String : String] = [:]) -> URLRequest {
+    func buildRequest(method: HTTPMethods, path: String, parameters: [String : String] = [:]) -> URLRequest {
         var components = components
         components.path = path
         components.queryItems = parameters.map {  URLQueryItem(name: $0, value: $1) }
@@ -34,13 +34,13 @@ struct PokemonListService: NetworkServiceType, PokemonListServiceType {
         return request
     }
     
-    func buildRequest(url: URL, method: Networker.HTTPMethods) -> URLRequest {
+    func buildRequest(url: URL, method: HTTPMethods) -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         return request
     }
     
-    func pokemons(limit: Int, offset: Int, completion: @escaping (Result<[Pokemon], Networker.NetworkerErrors>) -> Void) {
+    func pokemons(limit: Int, offset: Int, completion: @escaping (Result<[Pokemon], NetworkerErrors>) -> Void) {
         let params = [
             "limit": String(limit),
             "offset": String(offset)

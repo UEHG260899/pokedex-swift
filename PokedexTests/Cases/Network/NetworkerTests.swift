@@ -49,6 +49,13 @@ class NetworkerTests: XCTestCase {
         super.tearDown()
     }
     
+    // MARK: - Given functions
+    private func givenDataFromFile(name: String) -> Data? {
+        let path = Bundle(for: NetworkerTests.self).path(forResource: name, ofType: "json")!
+        let data = try? Data(contentsOf: URL(fileURLWithPath: path))
+        return data
+    }
+    
     // MARK: - When functions
     private func whenSimpleResposeMethodCalled() {
         mockTask = sut.response(for: validRequest, completion: {_ in}) as! MockURLSessionDataTask
@@ -80,7 +87,9 @@ class NetworkerTests: XCTestCase {
         return (calledCompletion, recievedResponse, recievedData, recievedError)
     }
     
-    private func whenDataMethodCalled(data: Data? = nil, response: URLResponse? = nil, error: Error? = nil) -> (calledCompletion: Bool, request: URLRequest?, data: Data?, error: NetworkerErrors?) {
+    private func whenDataMethodCalled(data: Data? = nil,
+                                      response: URLResponse? = nil,
+                                      error: Error? = nil) -> (calledCompletion: Bool, request: URLRequest?, data: Data?, error: NetworkerErrors?) {
         
         var calledCompletion = false
         var recievedRequest: URLRequest? = nil
@@ -101,6 +110,32 @@ class NetworkerTests: XCTestCase {
         recievedRequest = task.request
         
         return (calledCompletion, recievedRequest, recievedData, recievedError)
+    }
+    
+    private func whenDecodableMethodCalled<T: Decodable>(data: Data? = nil,
+                                                         response: URLResponse? = nil,
+                                                         error: Error? = nil,
+                                                         type: T.Type) -> (calledCompletion: Bool, request: URLRequest?, decodedData: T?, error: NetworkerErrors?) {
+        
+        var calledCompletion = false
+        var recievedRequest: URLRequest? = nil
+        var recievedError: NetworkerErrors? = nil
+        var recievedDecodedData: T? = nil
+        
+        let task = sut.decodable(for: validRequest, type: type) { result in
+            calledCompletion = true
+            switch result {
+            case .success(let decodedData):
+                recievedDecodedData = decodedData
+            case .failure(let error):
+                recievedError = error
+            }
+        } as! MockURLSessionDataTask
+        
+        recievedRequest = task.request
+        task.completionHandler(data, response, error)
+
+        return (calledCompletion, recievedRequest, recievedDecodedData, recievedError)
     }
         
     func testIfNetworkerCanBeInstantiated() {
@@ -245,6 +280,57 @@ class NetworkerTests: XCTestCase {
         
         // then
         XCTAssertEqual(result.data, dummyData)
+    }
+    
+    func testDecodableMethodCallsCompletion() {
+        // when
+        let result = whenDecodableMethodCalled(type: Pokemon.self)
+                
+        // then
+        XCTAssertTrue(result.calledCompletion)
+        
+    }
+    
+    func testDecodableMethodUsesPassedInRequest() {
+        // when
+        let result = whenDecodableMethodCalled(type: Pokemon.self)
+        
+        // then
+        XCTAssertEqual(result.request, validRequest)
+    }
+    
+    func testDecodableMethodReturnsDeserializationFailedErrorWhenInvalidJsonIsRecieved() {
+        // given
+        let data = givenDataFromFile(name: "BadPokemonList")
+        
+        // when
+        let result = whenDecodableMethodCalled(data: data, response: dummyValidResponse, type: PokemonList.self)
+        
+        // then
+        if case .deserializationFailed(let string) = result.error {
+            XCTAssertEqual(string, String(describing: PokemonList.self))
+        } else {
+            assertionFailure()
+        }
+    }
+    
+    func testDecodableMethodReturnsErrorWhenDataTaskReturnsError() {
+        // when
+        let result = whenDecodableMethodCalled(type: Pokemon.self)
+        
+        // when
+        XCTAssertEqual(result.error, .unknown)
+    }
+    
+    func testDecodableMethodReturnsWithDecodedDataWhenNetworkRequestIsSuccessful() {
+        // given
+        let data = givenDataFromFile(name: "ValidPokemonList")
+        
+        // when
+        let result = whenDecodableMethodCalled(data: data, response: dummyValidResponse, type: PokemonList.self)
+        
+        // then
+        XCTAssertTrue((result.decodedData as AnyObject) is PokemonList)
     }
     
 }

@@ -66,17 +66,14 @@ struct Networker {
         }
     }
     
-    func decodable<T: Decodable>(for request: URLRequest, type: T.Type, completion: @escaping (Result<T, NetworkerErrors>) -> (Void)) {
-        data(for: request) { result in
+    func decodable<T: Decodable>(for request: URLRequest, type: T.Type, completion: @escaping (Result<T, NetworkerErrors>) -> (Void)) -> URLSessionTaskProtocol {
+        return data(for: request) { result in
             switch result {
             case .success(let data):
                 do {
-                    debugPrint(data)
-                    let decoder = JSONDecoder()
-                    let decodedObject = try decoder.decode(type, from: data)
-                    completion(.success(decodedObject))
+                    let decodedData = try JSONDecoder().decode(type, from: data)
+                    completion(.success(decodedData))
                 } catch {
-                    debugPrint(error)
                     completion(.failure(.deserializationFailed(String(describing: type))))
                 }
             case .failure(let error):

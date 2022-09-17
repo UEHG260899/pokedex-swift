@@ -48,8 +48,10 @@ struct Networker {
         return task
     }
     
-    func data(for request: URLRequest, completion: @escaping (Result<Data, NetworkerErrors>) -> (Void)) {
-        response(for: request) { result in
+    @discardableResult
+    func data(for request: URLRequest, completion: @escaping (Result<Data, NetworkerErrors>) -> (Void)) -> URLSessionTaskProtocol {
+        return response(for: request) { result in
+            
             switch result {
             case .success((let response, let data)):
                 guard 200..<300 ~= response.statusCode else {

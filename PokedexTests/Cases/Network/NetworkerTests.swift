@@ -17,7 +17,7 @@ class NetworkerTests: XCTestCase {
     var invalidRequest: URLRequest!
     
     var dummyData: Data {
-        Data()
+        "Test Data".data(using: .utf8)!
     }
     
     var dummyValidResponse: HTTPURLResponse {
@@ -78,6 +78,29 @@ class NetworkerTests: XCTestCase {
         task.completionHandler(data, response, error)
         
         return (calledCompletion, recievedResponse, recievedData, recievedError)
+    }
+    
+    private func whenDataMethodCalled(data: Data? = nil, response: URLResponse? = nil, error: Error? = nil) -> (calledCompletion: Bool, request: URLRequest?, data: Data?, error: NetworkerErrors?) {
+        
+        var calledCompletion = false
+        var recievedRequest: URLRequest? = nil
+        var recievedData: Data? = nil
+        var recievedError: NetworkerErrors? = nil
+        
+        let task = sut.data(for: validRequest) { result in
+            calledCompletion = true
+            switch result {
+            case .success(let data):
+                recievedData = data
+            case .failure(let error):
+                recievedError = error
+            }
+        } as! MockURLSessionDataTask
+        
+        task.completionHandler(data, response, error)
+        recievedRequest = task.request
+        
+        return (calledCompletion, recievedRequest, recievedData, recievedError)
     }
         
     func testIfNetworkerCanBeInstantiated() {
@@ -168,5 +191,60 @@ class NetworkerTests: XCTestCase {
         XCTAssertEqual(result.response?.url, dummyValidResponse.url)
     }
     
+    func testDataMethodCallsCompletion() {
+        // given
+        let result = whenDataMethodCalled()
+        
+        // then
+        XCTAssertTrue(result.calledCompletion)
+    }
+    
+    func testDataMethodUsesPassedInRequest() {
+        // when
+        let result = whenDataMethodCalled()
+        
+        // then
+        XCTAssertEqual(result.request, validRequest)
+    }
+    
+    func testDataMethodReturnsRequestFailedErrorWhenRequestFailed() {
+        // given
+        let badResponse = HTTPURLResponse(url: validRequest.url!, statusCode: 400, httpVersion: "", headerFields: [:])
+        
+        // when
+        let result = whenDataMethodCalled(data: dummyData, response: badResponse)
+        
+        // then
+        if case .requestFailed(let response) = result.error {
+            XCTAssertEqual(response.url, badResponse?.url)
+            XCTAssertEqual(response.statusCode, badResponse?.statusCode)
+        } else {
+            assertionFailure()
+        }
+    }
+    
+    func testDataMethodReturnsSameErrorAsReponseMethodWhenItFails() {
+        // when
+        let result = whenDataMethodCalled()
+        
+        // then
+        XCTAssertEqual(result.error, .unknown)
+    }
+    
+    func testDataMethodCompletesWithDataWhenNoErrorOcurred() {
+        // when
+        let result = whenDataMethodCalled(data: dummyData, response: dummyValidResponse)
+        
+        // then
+        XCTAssertNotNil(result.data)
+    }
+    
+    func testDataMethodCompletesWithSameDataAsTheOneRecievedByNetwork() {
+        // when
+        let result = whenDataMethodCalled(data: dummyData, response: dummyValidResponse)
+        
+        // then
+        XCTAssertEqual(result.data, dummyData)
+    }
     
 }
